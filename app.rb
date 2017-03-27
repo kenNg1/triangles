@@ -8,16 +8,9 @@ get('/') do
 end
 
 get('/grab') do
-  @partial = params[:checkbox]
-  if @partial=='exact'
-  # @partial = params.fetch('radio_button') --> checked = 3
-  @word = params.fetch('word')
-  @output = params.fetch('sentence').word_count_exact(@word)
-  erb(:sentence)
-  else
-  # @partial = params.fetch('radio_button') --> unchecked = 4
-  @word = params.fetch('word')
-  @output = params.fetch('sentence').word_count_partial(@word)
-  erb(:sentence)
+  @side0 = params.fetch('side0')
+  @side1 = params.fetch('side1')
+  @side2 = params.fetch('side2')
+  @output = Triangle.new(@side0, @side1, @side2).triangle?()
+  erb(:triangle)
   end
-end
