@@ -1,18 +1,25 @@
 require ('pry')
 
-class Array
+class Triangle
+  define_method(:initialize) do |side0,side1,side2|
+    @side0 = side0
+    @side1 = side1
+    @side2 = side2
+  end
+
   define_method(:triangle?) do
-    sides = sort()
+    sides = [@side0,@side1,@side2]
+    sides = sides.sort()
     if (sides[0] + sides[1]) > sides[2]
       if (sides[0] == sides[1]) && (sides[1]==sides[2])
-        return "This is an equilateral triangle"
+         "This is an equilateral triangle"
       elsif (sides[0] == sides [1]) || (sides[1] == sides [2])
-        return "This is an isoceles triangle"
+         "This is an isoceles triangle"
       else
-        return "This is a scalene triangle"
+         "This is a scalene triangle"
       end
     else
-      return "This is not a triangle"
+      "This is not a triangle"
     end
   end
 end
